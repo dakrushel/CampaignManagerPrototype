@@ -51,7 +51,7 @@ const Post = ({ post }) => {
   }
 
   return (
-    <li className="p-3 my-5 bg-stone-200" key={post.id}>
+    <li className="p-3 my-5 bg-stone-200 text-stone-600" key={post.id}>
       <h1 className="font-bold">{post.title}</h1>
       <p>{post.description}</p>
       {/* Add onClick for Edit and Delete Button */}
