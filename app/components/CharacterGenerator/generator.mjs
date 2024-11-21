@@ -1,5 +1,5 @@
 import * as Arrays from './arrays.mjs';
-import { racesArray, racesList, BaseCharacter } from './races.mjs';
+import { racesArray, BaseCharacter } from './races.mjs';
 import { PickANumber, PickSeveralNumbers } from './rnGesus.mjs';
 
 const randGen = () => {
@@ -13,7 +13,7 @@ const randGen = () => {
     let twoVices = PickSeveralNumbers(0, Arrays.vices.length - 1, 2);
     let threeIdeals = PickSeveralNumbers(0, Arrays.ideals.length - 1, 3);
     
-    //This might be nested in individual races but it's here for now
+    //This might be nested in individual races but for here for now
     const pickAlignment = () => {
         let type = PickANumber(1, 2) > 1 ? "Lawful" : "Chaotic";
         let alignment = PickANumber(1, 10); 
@@ -25,7 +25,7 @@ const randGen = () => {
     
     const pickName = (gender, race) => {
         //Validation
-        if (gender !== "Male" && gender !== "Female" || !racesList.includes(race)) {
+        if (gender !== "Male" && gender !== "Female" || !Arrays.races.includes(race)) {
             return "";
         }
 
@@ -57,30 +57,30 @@ const randGen = () => {
                 first = (gender === "Male") ? Arrays.tieflingMNames[PickANumber(0, Arrays.tieflingMNames.length - 1)] : Arrays.tieflingFNames[PickANumber(0, Arrays.tieflingFNames.length - 1)];
                 last = Arrays.tieflingVNames[PickANumber(0, Arrays.tieflingVNames.length - 1)];
                 break;
-            // case "Orc":
-            //     first = Arrays.orcNames[PickANumber(0, Arrays.orcNames.length - 1)];
-            //     last = Arrays.orcClans[PickANumber(0, Arrays.orcClans.length - 1)];
-            //     break;
-            // case "Goblin":
-            //     first = Arrays.goblinNames[PickANumber(0, Arrays.goblinNames.length - 1)];
-            //     last = Arrays.goblinClans[PickANumber(0, Arrays.goblinClans.length - 1)];
-            //     break;
-            // case "Kobold":
-            //     first = Arrays.koboldNames[PickANumber(0, Arrays.koboldClans.length - 1)];
-            //     last = Arrays.orcClans[PickANumber(0, Arrays.orcClans.length - 1)];
-            //     break;
-            // case "Hobgoblin":
-            //     first = Arrays.hobgoblinNames[PickANumber(0, Arrays.hobgoblinNames.length - 1)];
-            //     last = Arrays.hobgoblinClans[PickANumber(0, Arrays.hobgoblinClans.length - 1)];
-            //     break;
-            // case "Bugbear":
-            //     first = Arrays.bugbearNames[PickANumber(0, Arrays.bugbearNames.length - 1)];
-            //     last = Arrays.bugbearClans[PickANumber(0, Arrays.bugbearClans.length - 1)];
-            //     break;
-            // case "Gnoll":
-            //     first = Arrays.gnollNames[PickANumber(0, Arrays.gnollNames.length - 1)];
-            //     last = Arrays.gnollClans[PickANumber(0, Arrays.gnollClans.length - 1)];
-            //     break;
+            case "Orc":
+                first = Arrays.orcNames[PickANumber(0, Arrays.orcNames.length - 1)];
+                last = Arrays.orcClans[PickANumber(0, Arrays.orcClans.length - 1)];
+                break;
+            case "Goblin":
+                first = Arrays.goblinNames[PickANumber(0, Arrays.goblinNames.length - 1)];
+                last = Arrays.goblinClans[PickANumber(0, Arrays.goblinClans.length - 1)];
+                break;
+            case "Kobold":
+                first = Arrays.koboldNames[PickANumber(0, Arrays.koboldClans.length - 1)];
+                last = Arrays.orcClans[PickANumber(0, Arrays.orcClans.length - 1)];
+                break;
+            case "Hobgoblin":
+                first = Arrays.hobgoblinNames[PickANumber(0, Arrays.hobgoblinNames.length - 1)];
+                last = Arrays.hobgoblinClans[PickANumber(0, Arrays.hobgoblinClans.length - 1)];
+                break;
+            case "Bugbear":
+                first = Arrays.bugbearNames[PickANumber(0, Arrays.bugbearNames.length - 1)];
+                last = Arrays.bugbearClans[PickANumber(0, Arrays.bugbearClans.length - 1)];
+                break;
+            case "Gnoll":
+                first = Arrays.gnollNames[PickANumber(0, Arrays.gnollNames.length - 1)];
+                last = Arrays.gnollClans[PickANumber(0, Arrays.gnollClans.length - 1)];
+                break;
         }
         return first + " " + last;
     }
@@ -115,6 +115,7 @@ const randGen = () => {
 }
 
 
+
 //Vices and virtues are synched so if they match, the character will be conflicted
 const characterToString = (character) => {
     if (!(character instanceof BaseCharacter)) {
@@ -136,5 +137,5 @@ const characterToString = (character) => {
 }
 
 
-const test = randGen();
-console.log(characterToString(test));
+// const test = randGen();
+// console.log(characterToString(test));

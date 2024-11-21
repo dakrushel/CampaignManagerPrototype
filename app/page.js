@@ -1,10 +1,33 @@
+"use client"
+
 import Image from "next/image";
+import AddNew from "./components/addnew";
+import NotesInput from "./components/DataInput/notesinput";
+import { useState } from "react";
+import NotesList from "./components/DataInput/noteslist";
 
 export default function Home() {
+
+  const [showNotes, setShowNotes] = useState(false);
+  const [notesList, setNotesList] = useState([]);
+  const addNewNote = (newNoteObj) => {
+      setNotesList([...notesList, newNoteObj])
+  }
+
+  const removeNote = (event) => {
+    let thisNoteList = noteList.filter(
+        (note) => note.id != event.target.getAttribute(data-note-id)
+    );
+    setNoteList(thisNoteList)
+}
+
+  let functionList = setShowNotes
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+      <main className="flex flex-col items-center justify-center">
+        <AddNew functionsList={functionList}/>
+        {showNotes && <NotesInput showNotes={setShowNotes} addNewNoteFunc={addNewNote}/>}
+        <NotesList listOfNotes={notesList}/>
       </main>
-    </div>
   );
 }
